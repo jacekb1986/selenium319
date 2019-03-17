@@ -11,10 +11,13 @@ public class Init {
 		// "C:\\Users\\Jacenty\\chromeDriver\\chromedriver.exe"
 
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Jacenty\\chromeDriver\\chromedriver.exe");
-
-		driver = new ChromeDriver();
-		driver.get("http://newtours.demoaut.com/");
-		return driver;
+		if(driver==null) {
+			driver = new ChromeDriver();
+			driver.get("http://newtours.demoaut.com/");
+			return driver;
+		} else {
+			return driver;
+		}
 	}
 
 	public static void log(String msg) {
@@ -24,6 +27,8 @@ public class Init {
 	public static void close() {
 		driver.close();
 		driver.quit();
+		driver = null;
+		
 	}
 
 	public static void sleep(int seconds) {

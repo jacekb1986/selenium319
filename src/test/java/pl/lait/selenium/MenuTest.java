@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING) // Do ustawiania kolejności testu
+@Ignore
+
 public class MenuTest {
 
 	WebDriver driver;
@@ -69,7 +71,7 @@ public class MenuTest {
 
 		Init.sleep(5);
 	}
-
+	@Ignore
 	@Test
 	public void loginAndReservationLevel1() {
 		driver.findElement(By.linkText("SIGN-ON")).click();
@@ -77,11 +79,12 @@ public class MenuTest {
 		driver.findElement(By.name("password")).sendKeys("wercia9");
 		driver.findElement(By.name("login")).click();
 
-		String OneWayXpath = "html/body/div/table/tbody/tr/td[2]/table/"
+		String oneWayXpath = "html/body/div/table/tbody/tr/td[2]/table/"
 				+ "tbody/tr[4]/td/table/tbody/tr/td[2]/table/tbody/tr[5]/td/form/table/"
 				+ "tbody/tr[2]/td[2]/b/font/input[2]";
 
-		driver.findElement(By.xpath(OneWayXpath)).click();
+		driver.findElement(By.xpath(oneWayXpath)).click();
+		
 		WebElement passCountWebElem = driver.findElement(By.name("passCount"));
 		Select passCountSelect = new Select(passCountWebElem);
 		passCountSelect.selectByVisibleText("2");
@@ -111,6 +114,8 @@ public class MenuTest {
 		Init.sleep(3);
 
 		driver.findElement(By.name("findFlights")).click();
+		
+		
 
 		/*
 		 * Po wyciągnięciu XPath z F12; name; prawy przycisk myszy - Copy: CopyXpath:
